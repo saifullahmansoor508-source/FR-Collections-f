@@ -1,0 +1,452 @@
+/* Card Collection System Styles */
+
+/* Collect Card Button Styles */
+.btn-collect-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-collect-card:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    color: white;
+}
+
+.btn-collect-card:active {
+    transform: translateY(0);
+}
+
+.btn-collect-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-collect-card:hover::before {
+    left: 100%;
+}
+
+/* Mobile Collect Card Button */
+.btn-collect-card-mobile {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-collect-card-mobile:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    color: white;
+}
+
+/* Card Collection Modal */
+.card-collection-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.card-collection-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.congratulations-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.card-collection-modal.show .congratulations-card {
+    transform: scale(1);
+}
+
+.congratulations-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.congratulations-card h2 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.congratulations-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.card-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.golden-card {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffd700 50%, #ffb300 75%, #ffd700 100%);
+    background-size: 200% 200%;
+    animation: goldenShimmer 3s ease-in-out infinite;
+}
+
+@keyframes goldenShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.golden-card h2 {
+    background: linear-gradient(45deg, #8b4513, #d2691e, #8b4513);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+}
+
+.golden-card p {
+    color: #8b4513;
+}
+
+.close-modal-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+}
+
+.close-modal-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Credit Card Dimensions - GRID LAYOUT */
+.collection-card {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1.6/1 !important;
+    min-height: 50px !important;
+    max-height: 70px !important;
+    border-radius: 8px !important;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.collection-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Card Gradients */
+.card-gradient-black {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+    color: white;
+}
+
+.card-gradient-blue {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    color: white;
+}
+
+.card-gradient-silver {
+    background: linear-gradient(135deg, #bdc3c7 0%, #ecf0f1 25%, #bdc3c7 50%, #95a5a6 75%, #bdc3c7 100%);
+    background-size: 200% 200%;
+    animation: silverShimmer 4s ease-in-out infinite;
+    color: #2c3e50;
+}
+
+@keyframes silverShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.card-gradient-golden {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffd700 50%, #ffb300 75%, #ffd700 100%);
+    background-size: 200% 200%;
+    animation: goldenShimmer 3s ease-in-out infinite;
+    color: #8b4513;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.card-gradient-golden:hover {
+    box-shadow: 0 15px 35px rgba(255, 215, 0, 0.6);
+}
+
+/* Locked Card Styles */
+.collection-card.locked {
+    background: linear-gradient(135deg, #95a5a6 0%, #bdc3c7 100%);
+    color: #7f8c8d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.collection-card.locked:hover {
+    transform: none;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.lock-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: #7f8c8d;
+}
+
+/* Phase Container */
+.phase-container {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.phase-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-rows: repeat(4, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    justify-items: stretch !important;
+}
+
+/* Center the 10th card (last card) in its row */
+.collection-card:nth-child(10) {
+    grid-column: 2 / 3 !important;
+    grid-row: 4 / 5 !important;
+}
+
+/* Collected Card Green Gradient */
+.collected-card {
+    background: linear-gradient(135deg, #10b981 0%, #34d399 25%, #6ee7b7 50%, #34d399 75%, #10b981 100%) !important;
+    background-size: 200% 200% !important;
+    animation: greenShimmer 3s ease-in-out infinite !important;
+    box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4), 
+                0 0 30px rgba(52, 211, 153, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.collected-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+    animation: collectShimmer 2s linear infinite;
+    pointer-events: none;
+}
+
+.collected-card:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.6), 
+                0 0 40px rgba(52, 211, 153, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+@keyframes greenShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes collectShimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Card Gradient Colors by Position */
+.card-gradient-black {
+    background: linear-gradient(135deg, #1f2937 0%, #374151 25%, #4b5563 50%, #374151 75%, #1f2937 100%) !important;
+    background-size: 200% 200% !important;
+    animation: blackShimmer 3s ease-in-out infinite !important;
+    box-shadow: 0 4px 20px rgba(31, 41, 55, 0.4), 
+                0 0 30px rgba(75, 85, 99, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.card-gradient-blue {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 25%, #60a5fa 50%, #3b82f6 75%, #1e40af 100%) !important;
+    background-size: 200% 200% !important;
+    animation: blueShimmer 3s ease-in-out infinite !important;
+    box-shadow: 0 4px 20px rgba(30, 64, 175, 0.4), 
+                0 0 30px rgba(59, 130, 246, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.card-gradient-silver {
+    background: linear-gradient(135deg, #6b7280 0%, #9ca3af 25%, #d1d5db 50%, #9ca3af 75%, #6b7280 100%) !important;
+    background-size: 200% 200% !important;
+    animation: silverShimmer 3s ease-in-out infinite !important;
+    box-shadow: 0 4px 20px rgba(107, 114, 128, 0.4), 
+                0 0 30px rgba(156, 163, 175, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.card-gradient-golden {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 25%, #fcd34d 50%, #f59e0b 75%, #fbbf24 100%) !important;
+    background-size: 200% 200% !important;
+    animation: goldenShimmer 3s ease-in-out infinite !important;
+    box-shadow: 0 4px 20px rgba(251, 191, 36, 0.4), 
+                0 0 30px rgba(245, 158, 11, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+    color: #92400e !important;
+}
+
+@keyframes blackShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes blueShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes silverShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes goldenShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .collection-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 45px !important;
+        max-height: 50px !important;
+        aspect-ratio: 1.6/1 !important;
+    }
+    
+    .congratulations-card {
+        width: 90%;
+        max-width: 400px;
+        padding: 30px 20px;
+    }
+    
+    .congratulations-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    .congratulations-card p {
+        font-size: 1rem;
+    }
+    
+    .card-icon {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .collection-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 40px !important;
+        max-height: 45px !important;
+        aspect-ratio: 1.6/1 !important;
+    }
+    
+    .congratulations-card {
+        padding: 25px 15px;
+    }
+    .congratulations-card h2 {
+        font-size: 1.3rem;
+    }
+    
+    .congratulations-card p {
+        font-size: 1rem;
+    }
+}

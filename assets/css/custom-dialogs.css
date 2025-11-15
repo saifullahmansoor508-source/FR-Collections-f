@@ -1,0 +1,473 @@
+/* Custom Dialog System - Ultra Modern & Shiny */
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.dialog-box {
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 28px;
+    box-shadow: 
+        0 25px 70px rgba(0, 0, 0, 0.35),
+        0 10px 25px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    max-width: 440px;
+    width: 90%;
+    padding: 0;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transform: scale(0.7) translateY(40px);
+    opacity: 0;
+    animation: slideInBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.1s;
+}
+
+@keyframes slideInBounce {
+    0% {
+        transform: scale(0.7) translateY(40px);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.02) translateY(-5px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    to {
+        transform: scale(0.8) translateY(30px);
+        opacity: 0;
+    }
+}
+
+.dialog-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin: -45px auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.25),
+        0 5px 15px rgba(0, 0, 0, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+    animation: iconBounce 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation-delay: 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.dialog-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes iconBounce {
+    0% { 
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.15) rotate(10deg);
+    }
+    70% {
+        transform: scale(0.95) rotate(-5deg);
+    }
+    100% { 
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.dialog-icon.success {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+    color: white;
+    box-shadow: 
+        0 15px 40px rgba(16, 185, 129, 0.5),
+        0 5px 15px rgba(16, 185, 129, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.dialog-icon.error {
+    background: linear-gradient(135deg, #f87171 0%, #ef4444 50%, #dc2626 100%);
+    color: white;
+    box-shadow: 
+        0 15px 40px rgba(239, 68, 68, 0.5),
+        0 5px 15px rgba(239, 68, 68, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.dialog-icon.warning {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+    color: white;
+    box-shadow: 
+        0 15px 40px rgba(245, 158, 11, 0.5),
+        0 5px 15px rgba(245, 158, 11, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.dialog-icon.info {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+    color: white;
+    box-shadow: 
+        0 15px 40px rgba(59, 130, 246, 0.5),
+        0 5px 15px rgba(59, 130, 246, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.dialog-icon.danger {
+    background: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #db2777 100%);
+    color: white;
+    box-shadow: 
+        0 15px 40px rgba(236, 72, 153, 0.5),
+        0 5px 15px rgba(236, 72, 153, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.dialog-content {
+    padding: 55px 35px 35px;
+    text-align: center;
+}
+
+.dialog-title {
+    font-size: 1.65rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 18px 0;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    animation: titleSlide 0.5s ease-out;
+    animation-delay: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes titleSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dialog-message {
+    font-size: 1rem;
+    color: #64748b;
+    line-height: 1.7;
+    margin: 0 0 30px 0;
+    animation: messageSlide 0.5s ease-out;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+}
+
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dialog-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 35px 35px;
+}
+
+.dialog-btn {
+    width: 100%;
+    padding: 16px 28px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    animation: buttonSlide 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.dialog-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 100%
+    );
+    transition: left 0.6s ease;
+}
+
+.dialog-btn:hover::before {
+    left: 100%;
+}
+
+@keyframes buttonSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dialog-btn:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.dialog-btn:nth-child(2) {
+    animation-delay: 0.55s;
+}
+
+.dialog-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+.dialog-btn:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.dialog-btn-cancel {
+    background: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%);
+    color: #64748b;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.dialog-btn-cancel:hover {
+    background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e1 100%);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    color: #475569;
+}
+
+.dialog-btn-confirm {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+    color: white;
+    box-shadow: 
+        0 8px 20px rgba(59, 130, 246, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.dialog-btn-confirm:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    box-shadow: 0 12px 28px rgba(59, 130, 246, 0.5);
+}
+
+.dialog-btn-danger {
+    background: linear-gradient(135deg, #f472b6 0%, #ec4899 50%, #db2777 100%);
+    color: white;
+    box-shadow: 
+        0 8px 20px rgba(236, 72, 153, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.dialog-btn-danger:hover {
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
+    box-shadow: 0 12px 28px rgba(236, 72, 153, 0.5);
+}
+
+.dialog-btn-success {
+    background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
+    color: white;
+    box-shadow: 
+        0 8px 20px rgba(16, 185, 129, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.dialog-btn-success:hover {
+    background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+    box-shadow: 0 12px 28px rgba(16, 185, 129, 0.5);
+}
+
+/* Progress Ring for video watching */
+.dialog-progress {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-ring {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.progress-ring svg {
+    transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+    stroke: #e5e7eb;
+    fill: none;
+    stroke-width: 8;
+}
+
+.progress-ring-progress {
+    stroke: url(#progressGradient);
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .dialog-box {
+        width: 92%;
+        max-width: 92%;
+        border-radius: 24px;
+    }
+    
+    .dialog-icon {
+        width: 80px;
+        height: 80px;
+        margin: -40px auto 20px;
+        font-size: 2.4rem;
+    }
+    
+    .dialog-content {
+        padding: 48px 28px 28px;
+    }
+    
+    .dialog-buttons {
+        padding: 0 28px 28px;
+        gap: 10px;
+    }
+    
+    .dialog-btn {
+        padding: 14px 24px;
+        font-size: 0.95rem;
+    }
+    
+    .dialog-title {
+        font-size: 1.4rem;
+    }
+    
+    .dialog-message {
+        font-size: 0.95rem;
+    }
+}
+
+/* Loading spinner with modern animation */
+.dialog-loading {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top-color: white;
+    border-right-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Add pulse animation for interactive feeling */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Hover effect for the entire dialog box */
+.dialog-box:hover {
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.4),
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
